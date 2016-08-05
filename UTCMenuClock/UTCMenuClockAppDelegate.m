@@ -87,7 +87,7 @@ NSMenuItem *showTimeZoneItem;
     NSDateFormatter* UTCdateShortDF = [[[NSDateFormatter alloc] init] autorelease];
     NSDateFormatter* UTCdaynum = [[[NSDateFormatter alloc] init] autorelease];
     
-    NSTimeZone* UTCtz = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
+    NSTimeZone* UTCtz = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
 
     [UTCdf setTimeZone: UTCtz];
     [UTCdateDF setTimeZone: UTCtz];
@@ -100,9 +100,9 @@ NSMenuItem *showTimeZoneItem;
     BOOL showTimeZone = [self fetchBooleanPreference:@"ShowTimeZone"];
     
     if (showSeconds){
-        [UTCdf setDateFormat: @"hh:mm:ss a"];
+        [UTCdf setDateFormat: @"HH:mm:ss"];
     } else {
-        [UTCdf setDateFormat: @"hh:mm a"];
+        [UTCdf setDateFormat: @"HH:mm"];
     }
 
     [UTCdateDF setDateStyle:NSDateFormatterFullStyle];
@@ -123,7 +123,7 @@ NSMenuItem *showTimeZoneItem;
     }
     
     if (showTimeZone) { 
-        UTCTzString = @" PST";
+        UTCTzString = @" UTC";
     } else { 
         UTCTzString = @"";
     }
